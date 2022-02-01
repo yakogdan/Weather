@@ -6,17 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+        android:id="@+id/homeTemp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="150dp"
+        android:text="-15°C"
+        android:textColor="@color/black"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пасмурно"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/homeTemp"
+        app:layout_constraintStart_toStartOf="@+id/homeTemp"
+        app:layout_constraintTop_toBottomOf="@+id/homeTemp" />
+
+    <TextView
+        android:id="@+id/tempMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="6dp"
+        android:text="мин -22"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/tempMax"
+        app:layout_constraintStart_toStartOf="@+id/homeDescription"
+        app:layout_constraintTop_toBottomOf="@+id/homeDescription" />
+
+    <TextView
+        android:id="@+id/tempMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="макс -15"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/homeDescription"
+        app:layout_constraintStart_toEndOf="@+id/tempMin"
+        app:layout_constraintTop_toBottomOf="@+id/homeDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
