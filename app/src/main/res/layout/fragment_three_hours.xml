@@ -7,8 +7,10 @@
     tools:context=".ui.threehours.ThreeHoursFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFragmentThreeHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,39 +4,52 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.yakogdan.weather.adapters.ThreeHoursAdapter
 import com.yakogdan.weather.databinding.FragmentThreeHoursBinding
+import com.yakogdan.weather.model.ThreeHoursModel
 
 class ThreeHoursFragment : Fragment() {
 
-    private var _binding: FragmentThreeHoursBinding? = null
+    lateinit var binding: FragmentThreeHoursBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val threeHoursAdapter = ThreeHoursAdapter(getData())
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(ThreeHoursViewModel::class.java)
-
-        _binding = FragmentThreeHoursBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-//        val textView: TextView = binding.textDashboard
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-        return root
+        binding = FragmentThreeHoursBinding.inflate(inflater)
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
+            rvFragmentThreeHours.adapter = threeHoursAdapter
+        }
     }
+
+    private fun getData() = listOf<ThreeHoursModel>(
+        ThreeHoursModel(
+            "2022-02-01 00:00:00",
+            "-1.54",
+            "небольшой снег"
+        ),
+        ThreeHoursModel(
+            "2022-02-01 3:00:00",
+            "-2.54",
+            "большой снег"
+        ),
+        ThreeHoursModel(
+            "2022-02-01 6:00:00",
+            "-3.74",
+            "средний снег"
+        ),
+        ThreeHoursModel(
+            "2022-02-01 9:00:00",
+            "-2.82",
+            "снег"
+        )
+    )
 }
