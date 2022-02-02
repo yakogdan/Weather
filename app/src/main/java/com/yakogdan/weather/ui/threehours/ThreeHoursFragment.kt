@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.yakogdan.weather.WeatherApp
 import com.yakogdan.weather.adapters.ThreeHoursAdapter
 import com.yakogdan.weather.databinding.FragmentThreeHoursBinding
 import com.yakogdan.weather.model.ThreeHoursModel
 
 class ThreeHoursFragment : Fragment() {
 
-    lateinit var binding: FragmentThreeHoursBinding
+    private lateinit var binding: FragmentThreeHoursBinding
 
     private val threeHoursAdapter = ThreeHoursAdapter(getData())
 
@@ -28,6 +30,8 @@ class ThreeHoursFragment : Fragment() {
         binding.apply {
             rvFragmentThreeHours.adapter = threeHoursAdapter
         }
+        val threeHoursViewModel = ViewModelProvider(this)[ThreeHoursViewModel::class.java]
+        threeHoursViewModel.fetchForecast((activity?.application as? WeatherApp)?.weatherApi)
     }
 
     private fun getData() = listOf<ThreeHoursModel>(
