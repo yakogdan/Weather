@@ -1,6 +1,7 @@
 package com.yakogdan.weather.data.remote.weather
 
 import com.yakogdan.weather.model.forecast.ForecastResponse
+import com.yakogdan.weather.model.weather.WeatherResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -22,6 +23,6 @@ interface WeatherApi {
         @Query("appid") apiKey: String,
         @Query("lang") lang: String,
         @Query("units") units: String
-    ): Single<ForecastResponse>
+    ): Single<WeatherResponse>
 
 }

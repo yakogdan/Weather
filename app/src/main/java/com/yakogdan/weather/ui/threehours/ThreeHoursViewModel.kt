@@ -11,25 +11,25 @@ import io.reactivex.schedulers.Schedulers
 
 class ThreeHoursViewModel : ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
+    private val threeHoursCompositeDisposable = CompositeDisposable()
     private val apiKey = "e98a5f2a5a5ca9c353c06b901f89834e"
     private val weatherRepository = WeatherRepository()
 
-    val dataLiveData: MutableLiveData<ForecastResponse> = MutableLiveData()
+    val forecastLiveData: MutableLiveData<ForecastResponse> = MutableLiveData()
 
     fun fetchForecast() {
-        compositeDisposable.add(weatherRepository.getForecast(apiKey)
+        threeHoursCompositeDisposable.add(weatherRepository.getForecast(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ forecastData ->
-                dataLiveData.value = forecastData
+                forecastLiveData.value = forecastData
             }, {
-                Log.e("Error", it.message.toString())
+                Log.e("Error forecast", it.message.toString())
             }))
     }
 
     override fun onCleared() {
-        compositeDisposable.dispose()
+        threeHoursCompositeDisposable.dispose()
         super.onCleared()
     }
 }

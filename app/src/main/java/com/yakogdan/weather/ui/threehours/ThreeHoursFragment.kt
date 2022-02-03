@@ -29,7 +29,7 @@ class ThreeHoursFragment : Fragment() {
         binding.apply {
             rvFragmentThreeHours.adapter = threeHoursAdapter
         }
-        threeHoursViewModel.dataLiveData.observe(viewLifecycleOwner) {
+        threeHoursViewModel.forecastLiveData.observe(viewLifecycleOwner) {
             threeHoursAdapter.setData(it.list)
         }
         threeHoursViewModel.fetchForecast()
