@@ -10,17 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class WeatherApp: Application() {
 
-    val baseUrl = "https://api.openweathermap.org/data/2.5/"
-    val apiKey = "e98a5f2a5a5ca9c353c06b901f89834e"
-    lateinit var weatherApi: WeatherApi
+    private val baseUrl = "https://api.openweathermap.org/data/2.5/"
+    private val apiKey = "e98a5f2a5a5ca9c353c06b901f89834e"
+    val weatherApi: WeatherApi by lazy { configureRetrofit() }
 
     override fun onCreate() {
         super.onCreate()
-
-        configureRetrofit()
+        instance = this
     }
 
-    private fun configureRetrofit() {
+    private fun configureRetrofit(): WeatherApi {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -35,6 +34,10 @@ class WeatherApp: Application() {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
-        weatherApi = retrofit.create(WeatherApi::class.java)
+        return retrofit.create(WeatherApi::class.java)
+    }
+
+    companion object {
+        lateinit var instance: WeatherApp
     }
 }

@@ -5,17 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.yakogdan.weather.WeatherApp
+import androidx.fragment.app.viewModels
 import com.yakogdan.weather.adapters.ThreeHoursAdapter
 import com.yakogdan.weather.databinding.FragmentThreeHoursBinding
-import com.yakogdan.weather.model.ThreeHoursModel
 
 class ThreeHoursFragment : Fragment() {
 
     private lateinit var binding: FragmentThreeHoursBinding
 
-    private val threeHoursAdapter = ThreeHoursAdapter(getData())
+    private val threeHoursAdapter = ThreeHoursAdapter()
+    private val threeHoursViewModel: ThreeHoursViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,30 +29,11 @@ class ThreeHoursFragment : Fragment() {
         binding.apply {
             rvFragmentThreeHours.adapter = threeHoursAdapter
         }
-        val threeHoursViewModel = ViewModelProvider(this)[ThreeHoursViewModel::class.java]
-        threeHoursViewModel.fetchForecast((activity?.application as? WeatherApp)?.weatherApi)
+        threeHoursViewModel.dataLiveData.observe(viewLifecycleOwner) {
+            threeHoursAdapter.setData(it.list)
+        }
+        threeHoursViewModel.fetchForecast()
     }
 
-    private fun getData() = listOf<ThreeHoursModel>(
-        ThreeHoursModel(
-            "2022-02-01 00:00:00",
-            "-1.54",
-            "небольшой снег"
-        ),
-        ThreeHoursModel(
-            "2022-02-01 3:00:00",
-            "-2.54",
-            "большой снег"
-        ),
-        ThreeHoursModel(
-            "2022-02-01 6:00:00",
-            "-3.74",
-            "средний снег"
-        ),
-        ThreeHoursModel(
-            "2022-02-01 9:00:00",
-            "-2.82",
-            "снег"
-        )
-    )
+
 }

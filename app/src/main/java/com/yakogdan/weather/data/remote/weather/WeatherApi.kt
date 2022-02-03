@@ -16,4 +16,12 @@ interface WeatherApi {
         @Query("cnt") cnt: String
     ): Single<ForecastResponse>
 
+    @GET("weather")
+    fun getWeather(
+        @Query("q") cityName: String,
+        @Query("appid") apiKey: String,
+        @Query("lang") lang: String,
+        @Query("units") units: String
+    ): Single<ForecastResponse>
+
 }
