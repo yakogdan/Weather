@@ -16,9 +16,10 @@ class ThreeHoursAdapter : RecyclerView.Adapter<ThreeHoursAdapter.ThreeHoursViewH
     inner class ThreeHoursViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemThreeHoursBinding.bind(view)
 
+        @SuppressLint("SetTextI18n")
         fun bind(listItem: ListItem) = with(binding) {
             tvDate.text = listItem.dtTxt
-            tvTemp.text = listItem.main.temp.toString()
+            tvTemp.text = listItem.main.temp.toInt().toString() + "°"
             tvDescription.text = listItem.weather[0].description
         }
     }
@@ -39,27 +40,4 @@ class ThreeHoursAdapter : RecyclerView.Adapter<ThreeHoursAdapter.ThreeHoursViewH
     }
 
     override fun getItemCount(): Int = data.size
-
-//    private fun getData() = listOf<ThreeHoursModel>(
-//        ThreeHoursModel(
-//            "2022-02-01 00:00:00",
-//            "-1.54",
-//            "небольшой снег"
-//        ),
-//        ThreeHoursModel(
-//            "2022-02-01 3:00:00",
-//            "-2.54",
-//            "большой снег"
-//        ),
-//        ThreeHoursModel(
-//            "2022-02-01 6:00:00",
-//            "-3.74",
-//            "средний снег"
-//        ),
-//        ThreeHoursModel(
-//            "2022-02-01 9:00:00",
-//            "-2.82",
-//            "снег"
-//        )
-//    )
 }

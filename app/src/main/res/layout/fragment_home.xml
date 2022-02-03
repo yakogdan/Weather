@@ -6,26 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Moscow" />
 
     <TextView
         android:id="@+id/homeTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="-15°C"
         android:textColor="@color/black"
-        android:textSize="60sp"
+        android:textSize="70sp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+        tools:text="-15°C" />
 
     <TextView
         android:id="@+id/homeDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Пасмурно"
+        tools:text="Snow"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/homeTemp"
         app:layout_constraintStart_toStartOf="@+id/homeTemp"
         app:layout_constraintTop_toBottomOf="@+id/homeTemp" />
@@ -36,9 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="6dp"
-        android:text="мин -22"
+        tools:text="min -22"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/tempMax"
         app:layout_constraintStart_toStartOf="@+id/homeDescription"
         app:layout_constraintTop_toBottomOf="@+id/homeDescription" />
@@ -48,10 +59,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="макс -15"
+        tools:text="max -15"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/homeDescription"
         app:layout_constraintStart_toEndOf="@+id/tempMin"
         app:layout_constraintTop_toBottomOf="@+id/homeDescription" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.yakogdan.weather.adapters.ThreeHoursAdapter
 import com.yakogdan.weather.databinding.FragmentThreeHoursBinding
+import com.yakogdan.weather.decoration.DividerDecoration
 
 class ThreeHoursFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class ThreeHoursFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
             rvFragmentThreeHours.adapter = threeHoursAdapter
+            rvFragmentThreeHours.addItemDecoration(DividerDecoration(0, 0, 0, 20))
         }
         threeHoursViewModel.forecastLiveData.observe(viewLifecycleOwner) {
             threeHoursAdapter.setData(it.list)

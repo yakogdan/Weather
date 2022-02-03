@@ -1,7 +1,7 @@
 package com.yakogdan.weather
 
 import android.app.Application
-import com.yakogdan.weather.data.remote.weather.WeatherApi
+import com.yakogdan.weather.data.WeatherApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

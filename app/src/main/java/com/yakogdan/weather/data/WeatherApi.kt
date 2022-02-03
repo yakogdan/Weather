@@ -1,4 +1,4 @@
-package com.yakogdan.weather.data.remote.weather
+package com.yakogdan.weather.data
 
 import com.yakogdan.weather.model.forecast.ForecastResponse
 import com.yakogdan.weather.model.weather.WeatherResponse

@@ -11,9 +11,4 @@
         android:icon="@drawable/ic_navigation_three_hours"
         android:title="@string/three_hours" />
 
-    <item
-        android:id="@+id/navigation_settings"
-        android:icon="@drawable/ic_navigation_settings"
-        android:title="@string/title_settings" />
-
 </menu>

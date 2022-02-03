@@ -3,7 +3,7 @@ package com.yakogdan.weather.ui.threehours
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yakogdan.weather.data.remote.weather.WeatherRepository
+import com.yakogdan.weather.data.WeatherRepository
 import com.yakogdan.weather.model.forecast.ForecastResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
